@@ -1,0 +1,16 @@
+.HeaderContainer {
+	height: var(--header-height);
+	background: var(--primary-color);
+	color: #FFFFFF;
+	display: flex;
+}
+
+.LogoContainer,
+.LogoContainer img {
+	height: var(--header-height);
+	cursor: pointer;
+}
+
+.ConnexionContainer {
+	margin-left: auto;
+}

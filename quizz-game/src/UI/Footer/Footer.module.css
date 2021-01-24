@@ -1,0 +1,4 @@
+.FooterContainer {
+	height: var(--footer-height);
+	background: var(--primary-color);
+}
