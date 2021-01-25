@@ -1,14 +1,31 @@
 .HeaderContainer {
 	height: var(--header-height);
-	background: var(--primary-color);
-	color: #FFFFFF;
+	/* background: var(--primary-color); */
+	border-bottom: 1px solid var(--primary-color);
+	/* color: #FFFFFF; */
 	display: flex;
 }
 
-.LogoContainer,
-.LogoContainer img {
+.LogoContainer {
 	height: var(--header-height);
 	cursor: pointer;
+	display: flex;
+}
+
+.LogoContainer img {
+	height: calc(var(--header-height) - 27px);
+	margin: 13.5px;
+	margin-right: 3px;
+}
+.LogoContainer .LogoText{
+	color: #22b7ce;
+	font-size: 40px;
+	font-family:'Raspoutine DemiBold';
+	margin-top: 48px;
+}
+
+.LogoContainer .LogoText span {
+	color: #562d81;
 }
 
 .ConnexionContainer {

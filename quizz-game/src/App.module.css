@@ -21,3 +21,27 @@
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+
+@font-face {
+  font-family: 'Raspoutine Classic';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Raspoutine Classic'), url('./assets/fonts/RaspoutineClassic_TB.woff') format('woff');
+}
+  
+
+@font-face {
+  font-family: 'Raspoutine Medium';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Raspoutine Medium'), url('./assets/fonts/RaspoutineMedium_TB.woff') format('woff');
+}
+  
+
+@font-face {
+  font-family: 'Raspoutine DemiBold';
+  font-style: normal;
+  font-weight: normal;
+  src: local('Raspoutine DemiBold'), url('./assets/fonts/RaspoutineDemiBold_TB.woff') format('woff');
+}

@@ -1,7 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { FirebaseContext } from '../../Firebase/index'
+import { Link } from 'react-router-dom'
 
-const Subscription = () => {
+const Subscription = (props) => {
 
 	const firebase = useContext(FirebaseContext)
 
@@ -11,6 +12,7 @@ const Subscription = () => {
 		password: '',
 		confirmPassword: ''
 	})
+	const [error, setError] = useState(false)
 
 	const handleChange = (event) => {
 		setSignUpData({...signUpData, [event.target.id]:event.target.value})
@@ -19,12 +21,21 @@ const Subscription = () => {
 	const handleSubmit = (event) => {
 		event.preventDefault()
 		firebase.subscription(signUpData.email, signUpData.password)
-		.then(user => {
+		.then( authUser => {
+			console.log(authUser)
+			return firebase.user(authUser.user.uid).set({
+				pseudo: signUpData.pseudo,
+				email: signUpData.email,
+			})
+		})
+		.then(() => {
 			console.log('SUCCESS')
+			setError(false)
 			setSignUpData({pseudo:'',email:'',password:'',confirmPassword:''})
+			props.history.push('/game')
 		})
 		.catch(error => {
-			console.log("error:", error)
+			setError(error.message)
 		})
 	}
 
@@ -50,6 +61,10 @@ const Subscription = () => {
 				</div>
 				<button type='submit'>Inscription</button>
 			</form>
+			{error && <div>{error}</div>}
+			<div>
+				Vous avez dejà un compte ? <Link to='/signup'>Se connecter</Link>
+			</div>
 		</div>
 	);
 };
