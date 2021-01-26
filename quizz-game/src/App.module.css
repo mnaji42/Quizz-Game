@@ -45,3 +45,8 @@
   font-weight: normal;
   src: local('Raspoutine DemiBold'), url('./assets/fonts/RaspoutineDemiBold_TB.woff') format('woff');
 }
+
+@font-face {
+  font-family: 'futura_medium_bt';
+  src: local('futura_medium_bt'), url('./assets/fonts/Futura_Medium_BT.woff') format('woff');
+}

@@ -1,0 +1,14 @@
+.LogoContainer {
+	display: flex;
+	/* z-index: 1000; */
+}
+
+.LogoContainer img {
+	height: 100%;
+}
+.LogoContainer .LogoText{
+	font-family:'Futura_Medium_BT';
+	display: flex;
+	align-items: center;
+	margin-left: 2px;
+}
