@@ -1,0 +1,117 @@
+.LinkHeaderWave {
+	position: relative;
+	top: 20px;
+	font-size: 50px;
+    font-weight: 500;
+    color: #FFFFFF;
+    letter-spacing: 1.2px;
+	text-transform: uppercase;
+	cursor: pointer;
+	/* perspective: 500px; */
+}
+
+.LinkHeaderWaveLeft {
+	left: 15px;
+}
+
+.LinkHeaderWave::before,
+.LinkHeaderWave::after {
+    content: attr(aria-label);
+    position: absolute;
+    top: 0;
+    left: 0;
+    /* transform: translate(-50%, -50%); */
+    text-shadow: 0.01em 0.01em 0.01em rgba(0, 0, 0, 0.3);
+}
+
+.LinkHeaderWave::before {
+    -webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+			clip-path: polygon(0% 0%, 100% 0%, 100% 50%, 0% 50%);
+	transition: all 0.3s ease-in 0.1s;
+}
+
+.LinkHeaderWave::after {
+    opacity: 0.65;
+    filter: blur(0.02em);
+    /* transform: translate(-50%, -50%) rotateX(21deg); */
+    -webkit-clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+			clip-path: polygon(0% 50%, 100% 50%, 100% 100%, 0% 100%);
+	transition: all 0.3s ease-in 0.1s;
+}
+
+.Container:hover > .LinkHeaderWave::after {
+	transform: translate(0%, -50%) rotateX(10deg);
+	-webkit-clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+	clip-path: polygon(0% 100%, 100% 100%, 100% 100%, 0% 100%);
+	transition: all 0.3s ease-in 0s;
+}
+
+.Container:hover > .LinkHeaderWave::before {
+	transform: translate(0%, -50%);
+	-webkit-clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+	transition: all 0.3s ease-in 0s;
+}
+
+.Container:hover > .LinkHeaderWaveLeft::after {
+	transform: translate(-10%, -50%) rotateX(10deg);
+}
+
+.Container:hover > .LinkHeaderWaveLeft::before {
+	transform: translate(-10%, -50%);
+}
+
+.Container:hover > .LinkHeaderWaveRight::after {
+	transform: translate(10%, -50%) rotateX(10deg);
+}
+
+.Container:hover > .LinkHeaderWaveRight::before {
+	transform: translate(10%, -50%);
+}
+
+.LinkSubLine {
+	position: relative;
+	color: #FFFFFF;
+	height: 60px;
+}
+
+.LinkSubLine::before {
+	position: absolute;
+	content: "";
+	left: 0;
+	width: 100%;
+	height: 3px;
+	bottom: 3px;
+	background-color: #FFFFFF;
+	visibility: hidden;
+	transform: scaleX(0);
+	transition: all 0.3s ease-in-out 0s;
+}
+
+.LinkSubLineLeft::before {
+	left: 0;
+	width: calc(100% - 15px);
+}
+
+.LinkSubLineRight::before {
+	left: 15px;
+	width: calc(100% - 15px);
+}
+
+.Container:hover > .LinkSubLine::before {
+	visibility: visible;
+	transform: scaleX(1);
+	transition: all 0.3s ease-in-out 0.3s;
+}
+
+.WhiteSplashLink {
+	position: relative;
+	bottom: 200px;
+	right: 70px;
+	width: 320px;
+	display: none;
+}
+
+.DisplayBlock {
+	display: block;
+}

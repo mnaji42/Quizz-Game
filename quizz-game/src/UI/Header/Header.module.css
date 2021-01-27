@@ -1,7 +1,7 @@
 .HeaderContainer {
 	height: var(--header-height);
 	/* background: var(--primary-color); */
-	border-bottom: 1px solid var(--primary-color);
+	/* border-bottom: 1px solid var(--primary-color); */
 	/* color: #FFFFFF; */
 	display: flex;
 }
@@ -17,6 +17,11 @@
 	position: relative;
 	top: -70vh;
 	transition: all 2s ease-in-out;
+	-webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+	user-select: none;
 }
 
 .HeaderContainerWaveAnimationTop {
@@ -35,17 +40,8 @@
 	/* height: 100%; */
 	height: 100%;
 	/* background: #22b7ce; */
-	background: linear-gradient(#22b7ce, #562d81);
-}
-
-.SplashLogo {
-	z-index: 98;
-	width: 900px;
-	height: 500px;
-	position: absolute;
-	left: 180px;
-	top:-150px;
-	/* transform: translate(-50%, -50%); */
+	/* background: linear-gradient(#22b7ce, #562d81); */
+	background: linear-gradient( var(--quizzy-secondary-color), var(--quizzy-primary-color));
 }
 
 .LogoContainer {
@@ -53,15 +49,49 @@
 	z-index: 99;
 	top: 200%;
 	left: 300%;
-	transform: translate(-50%, -50%);
-	transition: all 3s ease-in-out;
+	width: 750px;
+	transform: translate(-50%, -50%) rotate(180deg);
+	transition: all 3s ease-in;
+	display: flex;
+	justify-content: center;
 }
 
 .LogoContainerAnimate {
-	top: 20%;
+	top: 30%;
 	left: 50%;
-	/* transform: translate(-50%, -50%) rotate(-720deg); */
-	transition: all 2s ease-out;
+	transform: translate(-50%, -50%) rotate(360deg);
+	transition: all 3s ease-out;
+}
+
+.buttonLoginContainer {
+	position: absolute;
+	z-index: 99;
+	bottom: 30%;
+	left: 15%;
+}
+
+.buttonSignupContainer {
+	position: absolute;
+	z-index: 99;
+	bottom: 30%;
+	right: 15%;
+}
+
+.SplashLogo img {
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.SplashLogo {
+	z-index: 100;
+	position: absolute;
+	left: -85px;
+	top: -245px;
+	/* transform: translate(-50%, -50%); */
 }
 
 .Line1 {
@@ -110,6 +140,15 @@
 
 .displayNone {
 	display: none;
+}
+
+.LinkContainer {
+	opacity: 0;
+	transition: all 4s ease-in-out;
+}
+
+.LinkContainerShow {
+	opacity: 1;
 }
 
 @keyframes animate{

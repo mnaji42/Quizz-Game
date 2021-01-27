@@ -1,7 +1,8 @@
 :root {
   --header-height: 102px;
   --footer-height: 54px;
-  --primary-color: #1490CB;
+  --quizzy-primary-color: #22b7ce;
+  --quizzy-secondary-color: #562d81;
 }
 
 @media only screen and (max-width: 700px) {
