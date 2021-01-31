@@ -1,7 +1,8 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link } from 'react-router-dom'
 import { FirebaseContext } from '../../Firebase/index'
 import { UserContext } from '../../UserSession/UserContext'
+import {BubbleBackground, HeaderWave} from '../../UI/Components'
 
 const Connexion = (props) => {
 
@@ -31,7 +32,42 @@ const Connexion = (props) => {
 
 	return (
 		<div>
-			<h2>Connexion</h2>
+			<BubbleBackground>
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique, architecto dolor, ipsa optio est corrupti dicta asperiores consequuntur voluptas perspiciatis incidunt ad explicabo. Nemo praesentium illum tempore doloremque. Fugiat, iure?
+			</BubbleBackground>
+			{/* <Wave animation={waveAnimation}></Wave> */}
+			{/* <h2>Connexion</h2>
 			{user.isConnected && <h3>Hello {user.data.pseudo}</h3>}
 			<form onSubmit={handleSubmit}>
 				<div>
@@ -52,7 +88,7 @@ const Connexion = (props) => {
 			</div>
 			<div>
 				Nouveau sur OpenQuizzy ? <Link to='/signup'>Inscrivez vous !</Link>
-			</div>
+			</div> */}
 		</div>
 	);
 };

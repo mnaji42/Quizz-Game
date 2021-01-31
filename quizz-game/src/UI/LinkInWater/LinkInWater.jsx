@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import classes from './LinkInWater.module.css'
 import splashLink from '../../assets/imgs/white_splash_link.png'
 
@@ -13,13 +13,26 @@ export const LinkInWater = (props) => {
 		// background: "rgba(0,0,0,0.5)"
 	}
 
+	let timeout
+
+	useEffect(() => {
+
+		return function () {
+			clearTimeout(timeout)
+		}
+	},[])
+
 	const classesLink = [classes.LinkHeaderWave]
 	const classesSubLine = [classes.LinkSubLine]
 
 	const handleClick = () => {
 		setDisplaySplash(true)
-		if (props.onClick)
+		timeout = setTimeout(() => {
+			setDisplaySplash(false)
+		}, 1000)
+		if (props.onClick) {
 			props.onClick()
+		}
 	}
 
 	if (props.direction === 'left') {

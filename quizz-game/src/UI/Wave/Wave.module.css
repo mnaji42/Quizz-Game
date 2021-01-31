@@ -1,22 +1,9 @@
-.HeaderContainer {
-	height: var(--header-height);
-	/* background: var(--primary-color); */
-	/* border-bottom: 1px solid var(--primary-color); */
-	/* color: #FFFFFF; */
-	display: flex;
-}
-
-.ConnexionContainer {
-	margin-left: auto;
-	background-image: url(../../assets/logos/logo_quizz_color.png);
-}
-
 .HeaderContainerWave {
-	height: 90vh;
+	height: 100vh;
 	overflow: hidden;
 	position: relative;
-	top: -70vh;
-	transition: all 2s ease-in-out;
+	top: -100vh;
+	transition: all 1.2s ease-in-out;
 	-webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
@@ -29,7 +16,7 @@
 }
 
 .HeaderContainerWaveAnimationHeight {
-	height: 70vh;
+	height: 85vh;
 	top:0vh;
 }
 
@@ -42,56 +29,6 @@
 	/* background: #22b7ce; */
 	/* background: linear-gradient(#22b7ce, #562d81); */
 	background: linear-gradient( var(--quizzy-secondary-color), var(--quizzy-primary-color));
-}
-
-.LogoContainer {
-	position: absolute;
-	z-index: 99;
-	top: 200%;
-	left: 300%;
-	width: 750px;
-	transform: translate(-50%, -50%) rotate(180deg);
-	transition: all 3s ease-in;
-	display: flex;
-	justify-content: center;
-}
-
-.LogoContainerAnimate {
-	top: 30%;
-	left: 50%;
-	transform: translate(-50%, -50%) rotate(360deg);
-	transition: all 3s ease-out;
-}
-
-.buttonLoginContainer {
-	position: absolute;
-	z-index: 99;
-	bottom: 30%;
-	left: 15%;
-}
-
-.buttonSignupContainer {
-	position: absolute;
-	z-index: 99;
-	bottom: 30%;
-	right: 15%;
-}
-
-.SplashLogo img {
-	user-drag: none; 
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-}
-
-.SplashLogo {
-	z-index: 100;
-	position: absolute;
-	left: -85px;
-	top: -245px;
-	/* transform: translate(-50%, -50%); */
 }
 
 .Line1 {
@@ -136,19 +73,6 @@
 	-webkit-background-size: 50% 80px;
 	background-size: 50% 80px;
 	animation: animate 18s linear infinite;
-}
-
-.displayNone {
-	display: none;
-}
-
-.LinkContainer {
-	opacity: 0;
-	transition: all 4s ease-in-out;
-}
-
-.LinkContainerShow {
-	opacity: 1;
 }
 
 @keyframes animate{

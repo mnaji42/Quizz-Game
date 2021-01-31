@@ -1,0 +1,180 @@
+.ArrowContainer {
+	padding: 0;
+	margin: 0;
+}
+
+.ArrowContainer li {
+	position: relative;
+	list-style: none;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	transition: 0.5s;
+	cursor: pointer;
+	background: blue;
+	overflow: hidden;
+}
+
+.ArrowContainer li:hover {
+	background: red;
+}
+
+li.StyleDownLanding {
+	background: var(--quizzy-primary-color);
+}
+
+li.StyleDownLanding:hover {
+	background: var(--quizzy-secondary-color);
+}
+
+.ArrowContainer li span {
+	position: absolute;
+	width: 15px;
+	height: 15px;
+	transition: 0.5s;
+	border: 3px solid #FFFFFF;
+}
+
+.ArrowContainer li span:before {
+	content: '';
+	position: absolute;
+	width: 29px;
+	height: 3px;
+	background: #FFFFFF;
+	transition: 0.5s;
+	border-radius: 8px;
+}
+
+/* Arrow Right */
+
+.ArrowContainer li.Right span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-left: 0;
+	border-top: 0;
+}
+
+.ArrowContainer li.Right:hover span {
+	left: 58%;
+}
+
+.ArrowContainer li.Right span:before {
+	transform-origin: right;
+	transform: rotate(45deg) translate(0px, 19.2px) scaleX(0);
+}
+
+.ArrowContainer li.Right:hover span:before {
+	transform-origin: right;
+	transform: rotate(45deg) translate(0px, 19.2px) scaleX(1);
+}
+
+/* Arrow Left */
+
+.ArrowContainer li.Left span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-right: 0;
+	border-bottom: 0;
+}
+
+.ArrowContainer li.Left:hover span {
+	left: 42%;
+}
+
+.ArrowContainer li.Left span:before {
+	transform-origin: left;
+	transform: rotate(45deg) translate(-3px, -1px) scaleX(0);
+}
+
+.ArrowContainer li.Left:hover span:before {
+	transform-origin: left;
+	transform: rotate(45deg) translate(-3px, -1px) scaleX(1);
+}
+
+/* Arrow Down */
+
+.ArrowContainer li.Down span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-right: 0;
+	border-top: 0;
+}
+
+.ArrowContainer li.Down:hover span {
+	top: 58%;
+}
+
+.ArrowContainer li.Down span:before {
+	transform-origin: left;
+	transform: rotate(-45deg) translate(-10px, 9.5px) scaleX(0);
+}
+
+.ArrowContainer li.Down:hover span:before {
+	transform-origin: left;
+	transform: rotate(-45deg) translate(-10px, 9.5px) scaleX(1);
+}
+
+/* Arrow Up */
+
+.ArrowContainer li.Up span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-left: 0;
+	border-bottom: 0;
+}
+
+.ArrowContainer li.Up:hover span {
+	top: 42%;
+}
+
+.ArrowContainer li.Up span:before {
+	transform-origin: right;
+	transform: rotate(-45deg) translate(-9px, -10.8px) scaleX(0);
+}
+
+.ArrowContainer li.Up:hover span:before {
+	transform-origin: right;
+	transform: rotate(-45deg) translate(-9px, -10.8px) scaleX(1);
+}
+
+/* Animate ScrollDown Landing */
+
+.ArrowContainer li.StyleDownLanding span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-right: 0;
+	border-top: 0;
+	animation: bounce 0.7s ease infinite alternate;
+}
+
+.ArrowContainer li.StyleDownLanding:hover span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-right: 0;
+	border-top: 0;
+	animation: downInfinite 0.6s infinite ease-in;
+}
+
+@keyframes downInfinite {
+	0% {
+		top: -15px;
+	}
+	100% {
+		top: calc(120%);
+	}
+}
+
+@keyframes bounce{
+	from {
+		top: 44%;
+	}
+	to   {
+		top: calc(65%);
+	}
+}
