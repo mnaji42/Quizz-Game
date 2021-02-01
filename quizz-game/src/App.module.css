@@ -1,8 +1,16 @@
 :root {
   --header-height: 102px;
   --footer-height: 54px;
+
+  --primary-color: #383B45;
+  --grey-color-1: #676767;
   --quizzy-primary-color: #22b7ce;
   --quizzy-secondary-color: #562d81;
+
+  --quizzy-primary-color-opacity: rgba(34, 183, 206, 0.2);
+  --quizzy-secondary-color-opacity: rgba(86, 45, 129, 0.2);
+
+  --background-color: #FFFFFF;
 }
 
 @media only screen and (max-width: 700px) {
@@ -23,6 +31,11 @@
   scrollbar-width: none;  /* Firefox */
 }
 
+body {
+  min-width: 100vw;
+  min-height: 100vh;
+  background-color: var(--background-color);
+}
 
 @font-face {
   font-family: 'Raspoutine Classic';

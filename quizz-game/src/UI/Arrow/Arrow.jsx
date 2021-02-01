@@ -13,12 +13,35 @@ export const Arrow = (props) => {
 
 	const classeStyle = []
 
-	if (props.style === "DownLanding")
-		classeStyle.push(classes.StyleDownLanding)
+	if (props.style === "DownLanding") {
+		classeStyle.push(props.downLandingActivate === true ? classes.StyleDownLandingActivate : classes.StyleDownLanding)
+	}
+
+	if (props.color === 'quizzy') {
+		classeStyle.push(classes.ColorQuizzy)
+	}
+	else if (props.color === 'quizzy2') {
+		classeStyle.push(classes.ColorQuizzy2)
+	}
+
+	if (props.size === 'big') {
+		classeStyle.push(classes.StyleFat)
+	}
+
+	if (props.background === 'quizzy') {
+		classeStyle.push(classes.QuizzyBack)
+	}
+	else if (props.background === 'quizzy2') {
+		classeStyle.push(classes.Quizzy2Back)
+	}
 
 	return (
-		<ul className={classes.ArrowContainer}>
-			<li className={[classe, classeStyle].join(' ')}><span></span></li>
+		<ul 
+			onMouseEnter={props.onMouseEnter}
+			onMouseLeave={props.onMouseLeave}
+			onClick={props.onClick}
+			className={classes.ArrowContainer}>
+			<li className={[classe, classeStyle.join(' ')].join(' ')}><span></span></li>
 		</ul>
 	);
 };

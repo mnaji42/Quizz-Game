@@ -11,21 +11,20 @@
 	border-radius: 50%;
 	transition: 0.5s;
 	cursor: pointer;
-	background: blue;
 	overflow: hidden;
 }
 
-.ArrowContainer li:hover {
+/* .ArrowContainer li:hover {
 	background: red;
-}
+} */
 
 li.StyleDownLanding {
 	background: var(--quizzy-primary-color);
 }
 
-li.StyleDownLanding:hover {
+/* li.StyleDownLanding:hover {
 	background: var(--quizzy-secondary-color);
-}
+} */
 
 .ArrowContainer li span {
 	position: absolute;
@@ -85,12 +84,12 @@ li.StyleDownLanding:hover {
 
 .ArrowContainer li.Left span:before {
 	transform-origin: left;
-	transform: rotate(45deg) translate(-3px, -1px) scaleX(0);
+	transform: rotate(45deg) translate(-2px, -0.7px) scaleX(0);
 }
 
 .ArrowContainer li.Left:hover span:before {
 	transform-origin: left;
-	transform: rotate(45deg) translate(-3px, -1px) scaleX(1);
+	transform: rotate(45deg) translate(-2px, -0.7px) scaleX(1);
 }
 
 /* Arrow Down */
@@ -143,6 +142,19 @@ li.StyleDownLanding:hover {
 
 /* Animate ScrollDown Landing */
 
+li.StyleDownLandingActivate {
+	background: var(--quizzy-primary-color);
+}
+
+.ArrowContainer li.StyleDownLandingActivate span {
+	top: 58%;
+}
+
+.ArrowContainer li.StyleDownLandingActivate span:before {
+	transform-origin: left;
+	transform: rotate(-45deg) translate(-10px, 9.5px) scaleX(1);
+}
+
 .ArrowContainer li.StyleDownLanding span {
 	top: 50%;
 	left: 50%;
@@ -159,6 +171,55 @@ li.StyleDownLanding:hover {
 	border-right: 0;
 	border-top: 0;
 	animation: downInfinite 0.6s infinite ease-in;
+}
+
+.ArrowContainer li.StyleDownLandingActivate span {
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) rotate(-45deg);
+	border-right: 0;
+	border-top: 0;
+	animation: downInfinite 0.6s infinite ease-in;
+}
+
+li.ColorQuizzy span {
+	border-color: var(--quizzy-primary-color);
+}
+
+li.ColorQuizzy span:before {
+	background: var(--quizzy-primary-color);
+}
+
+li.ColorQuizzy2 span {
+	border-color: var(--quizzy-secondary-color)	
+}
+
+li.ColorQuizzy2 span:before {
+	background: var(--quizzy-secondary-color);
+}
+
+li.StyleFat span {
+	border-width: 5px;
+	width: 20px;
+	height: 20px;
+}
+
+li.StyleFat span:before {
+	height: 5px;
+	width: 39px;
+}
+
+li.StyleFat {
+	width: 70px;
+	height: 70px;
+}
+
+li.QuizzyBack {
+	background: var(--quizzy-primary-color);
+}
+
+li.Quizzy2Back {
+	background: var(--quizzy-secondary-color);
 }
 
 @keyframes downInfinite {

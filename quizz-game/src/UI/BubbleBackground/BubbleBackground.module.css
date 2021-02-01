@@ -1,7 +1,7 @@
 .BubbleBackground {
 	width: 100vw;
 	height: 100vh;
-	background: linear-gradient( var(--quizzy-secondary-color), var(--quizzy-primary-color));
+	/* background: linear-gradient( var(--quizzy-secondary-color), var(--quizzy-primary-color)); */
 	position: fixed;
 	top: 0px;
 	left: 0px;
@@ -14,7 +14,7 @@
 	bottom: -100px;
 	/* background: rgba(255,255,255,0.3); */
 	background: rgb(255,255,255);
-	background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.6) 100%);
+	background: radial-gradient(circle, rgba(34, 183, 206, 0.6) 0%, rgba(86, 45, 129, 0.3) 80%);
 	border-radius: 50%;
 	/* opacity: 0.5; */
 	animation: flying 10s infinite ease-in;

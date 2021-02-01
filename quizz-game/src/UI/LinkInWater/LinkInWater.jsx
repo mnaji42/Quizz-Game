@@ -5,6 +5,7 @@ import splashLink from '../../assets/imgs/white_splash_link.png'
 export const LinkInWater = (props) => {
 
 	const [displaySplash, setDisplaySplash] = useState(false)
+	const [timeout, setTimeout] = useState()
 
 	const stylesContainer =  {
 		height: props.height,
@@ -13,11 +14,12 @@ export const LinkInWater = (props) => {
 		// background: "rgba(0,0,0,0.5)"
 	}
 
-	let timeout
-
 	useEffect(() => {
 
+		console.log(timeout)
+
 		return function () {
+			console.log(timeout)
 			clearTimeout(timeout)
 		}
 	},[])
@@ -27,12 +29,17 @@ export const LinkInWater = (props) => {
 
 	const handleClick = () => {
 		setDisplaySplash(true)
-		timeout = setTimeout(() => {
+		setTimeout(setTimeout(() => {
 			setDisplaySplash(false)
-		}, 1000)
+		}, 1000))
 		if (props.onClick) {
 			props.onClick()
 		}
+	}
+
+	if (props.activate) {
+		classesSubLine.push(classes.LinkSubLineActive)
+		classesLink.push(classes.LinkHeaderWaveActive)
 	}
 
 	if (props.direction === 'left') {

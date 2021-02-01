@@ -30,6 +30,14 @@
 	transition: all 2s ease-out 0.5;
 }
 
+.ContainerLogoTopLeft {
+	top: 25px;
+	left: 25px;
+	width: 100px;
+	transform: skewX(0deg);
+	transition: all 1s ease-in;
+}
+
 .buttonLoginContainer {
 	position: absolute;
 	z-index: 99;
@@ -38,12 +46,26 @@
 	/* transform: translateX(85%); */
 }
 
+.buttonLoginContainerTop {
+	bottom: 50px;
+	right: 60%;
+	transition: all 1s ease-in;
+	/* transform: translateX(85%); */
+}
+
 .buttonSignupContainer {
 	position: absolute;
 	z-index: 99;
 	bottom: 25%;
 	left: 68%;
+	transition: all 1s ease-in;
 	/* transform: translateX(-85%); */
+}
+
+.buttonSignUpContainerTop {
+	bottom: 50px;
+	left: 60%;
+	/* transform: translateX(85%); */
 }
 
 .buttonRulesContainer {
@@ -54,9 +76,26 @@
     transform: translateX(-50%);
 }
 
+.buttonRulesContainerTitle {
+	bottom: -100px;
+	transition: all 1s ease-in-out;
+}
+
 .ScrollDownContainer {
+	position: fixed;
+	bottom: -100px;
+	width: 100vw;
 	display: flex;
+	padding-bottom: 28px;
 	justify-content: center;
+	opacity: 0;
+	/* transition: all 1.5s ease-out 1.5s; */
+}
+
+.ScrollDownContainerOpacity {
+	opacity: 1;
+	bottom: 0px;
+	transition: all 1.5s ease-out 1.5s;
 }
 
 .SplashLogo img {
