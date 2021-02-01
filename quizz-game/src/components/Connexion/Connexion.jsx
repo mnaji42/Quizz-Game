@@ -65,7 +65,7 @@ const Connexion = (props) => {
 							Password
 						</Input>
 						<div className={classes.BlobButtonContainer}>
-							<BlobButton>LOGIN</BlobButton>
+							<BlobButton spinner={false}>LOGIN</BlobButton>
 						</div>
 						<br/>
 						<br/>
