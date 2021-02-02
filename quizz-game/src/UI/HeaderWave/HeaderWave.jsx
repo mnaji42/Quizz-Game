@@ -1,242 +1,155 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react';
+import {useHistory } from 'react-router-dom'
+// import { FirebaseContext } from '../../Firebase/index'
 import classes from './HeaderWave.module.css'
-import { Link } from 'react-router-dom'
-import { FirebaseContext } from '../../Firebase/index'
-import { Logo, BubbleEffect, LinkInWater, Wave, Arrow, Title } from '../Components'
+import { Wave, Logo, LinkInWater, Arrow } from '../Components'
 import splashLogoImg from '../../assets/imgs/white_splash_logo.png'
-import {useHistory, useLocation} from 'react-router-dom'
 
-export const HeaderWave = (props) => {
+//Animation Wave : closeToOpenAndReduce, CloseToOpen, OpenToClose, OpenToTop, CloseToTop
 
-	const firebase = useContext(FirebaseContext)
+export const HeaderWave = () => {
+
+	// const firebase = useContext(FirebaseContext)
 	const history = useHistory()
-	const location = useLocation()
+	// const location = useLocation()
+
+	const [waveAnimation, setWaveAnimation] = useState({pos : null, anim: 'open'})
 	const [classesContainerLogo, setClassesContainerLogo] = useState([classes.LogoContainer])
 	const [logoHeight, setLogoHeight] = useState('600px')
 	const [splashLogo, setSplashLogo] = useState(false)
-	const [opacityLinkContainer, setOpacityLinkContainer] = useState(false)
-	const [animateBubbleLogin, setAnimateBubbleLogin] = useState(false)
-	const [animateBubbleSignUp, setAnimateBubbleSignUp] = useState(false)
-	const [animateBubbleRules, setAnimateBubbleRules] = useState(false)
-	const [animationWave, setAnimationWave] = useState(location.pathname === '/' ? "openWave" : "close")
-	const [displayHeader, setDisplayHeader] = useState(true)
-	const [classesScrollDown, setClassesScrollDown] = useState([classes.ScrollDownContainer])
 	const [hoverRules, setHoverRules] = useState(false)
 	const [hoverDownScroll, setHoverDownScroll] = useState(false)
-	const [pushTimeout, setPushTimeout] = useState([])
-
-	const handleDisconnect = () => {
-		firebase.signOut()
-	}
+	const [classesScrollDown, setClassesScrollDown] = useState([classes.ScrollDownContainer])
 	
+	const isTop = waveAnimation.anim === 'top' || (waveAnimation.anim === 'close' && waveAnimation.pos === 'top')
+
 	useEffect(() => {
 
-		const tmpTimeout = [...pushTimeout]
-
 		setClassesContainerLogo([classes.LogoContainer, classes.LogoContainerAnimate])
-		setLogoHeight('150px')
+		setLogoHeight('180px')
 		setClassesScrollDown([classes.ScrollDownContainer, classes.ScrollDownContainerOpacity])
-		tmpTimeout.push(setTimeout(() => {animationLinkAppear()}, 2000))
-		tmpTimeout.push(setTimeout(() => {setSplashLogo(true)}, 2500))
+		const timer = setTimeout(() => {setSplashLogo(true)}, 2000)
 
-		setPushTimeout(tmpTimeout)
-
-		return function () {
-			for(var i= 0; i < pushTimeout.length; i++)
-			{
-				clearTimeout(pushTimeout[i])
-			}
+		return function cleanup () {
+			clearTimeout(timer)
 		}
 	},[])
 
-	useEffect(() => {
+	const changeWaveAnimation = (anim) => {
+		setWaveAnimation({pos: waveAnimation.anim, anim: anim })
+	}
 
-		for(var i= 0; i < pushTimeout.length; i++)
-		{
-			clearTimeout(pushTimeout[i])
-		}
+	const waveAnimateTop = () => {
+		changeWaveAnimation('top')
 
-		setAnimateBubbleLogin(false)
-		setAnimateBubbleSignUp(false)
-		setAnimateBubbleRules(false)
+		// Logo
+		setClassesContainerLogo([classes.LogoContainer, classes.ContainerLogoTopLeft])
+		setLogoHeight('100px')
+		setSplashLogo(false)
 
-		if (location.pathname === '/') {
-			setDisplayHeader(true)
-			// setAnimationWave("open")
-		}
-		else {
-			const tmpTimeout = [...pushTimeout]
-			tmpTimeout.push(setTimeout(() => {setDisplayHeader(false)}, 1000))
-			setPushTimeout(tmpTimeout)
-		}
-		
-	},[location])
+	}
 
-	const animationLinkAppear = () => {
+	const waveAnimateOpen = () => {
 
-		const tmpTimeout = [...pushTimeout]
+		changeWaveAnimation('open')
 
-		setAnimateBubbleLogin(true)
-		setAnimateBubbleSignUp(true)
-		setAnimateBubbleRules(true)
-		setOpacityLinkContainer(true)
-		tmpTimeout.push(setTimeout(() => {
-			setAnimateBubbleLogin(false)
-			setAnimateBubbleSignUp(false)
-			setAnimateBubbleRules(false)
-		}, 2000))
-		setPushTimeout(tmpTimeout)
+		// Logo
+		setClassesContainerLogo([classes.LogoContainer, classes.LogoContainerAnimate])
+		setLogoHeight('180px')
+		setSplashLogo(true)
+
 	}
 
 	const handleClickLogin = () => {
-		console.log('coucou')
-		// setAnimationWave("close")
-		setDisplayHeader(false)
-		if (animationWave === 'top') {
-			setDisplayHeader(false)
-			setClassesContainerLogo([classes.LogoContainer, classes.LogoContainerAnimate])
-			setLogoHeight('150px')
-			setSplashLogo(true)
-			setAnimationWave('static')
+		if (isTop) {
+			waveAnimateOpen()
 		}
 		history.push('/login')
 	}
 
 	const handleClickSignUp = () => {
-		// setAnimationWave("close")
-		setDisplayHeader(false)
-		if (animationWave === 'top') {
-			setDisplayHeader(false)
-			setClassesContainerLogo([classes.LogoContainer, classes.LogoContainerAnimate])
-			setLogoHeight('150px')
-			setSplashLogo(true)
-			setAnimationWave('static')
+		if (isTop) {
+			waveAnimateOpen()
 		}
 		history.push('/signup')
 	}
 
-	const displayRulesClick = () => {
-
-		const tmpTimeout = [...pushTimeout]
-
-		setAnimationWave("top")
-		setLogoHeight('100px')
-		setSplashLogo(false)
-		setHoverRules(false)
-		setClassesContainerLogo([classes.LogoContainer, classes.ContainerLogoTopLeft])
-
-		setPushTimeout(tmpTimeout)
+	const handleClickRules = () => {
+		waveAnimateTop()
 	}
 
 	let rulesTitle = (
 		<h1>RULES</h1>
 	)
 
-	if (animationWave !== 'top') {
+	if (!isTop) {
 		rulesTitle = (
 			<LinkInWater
-			activate={hoverDownScroll ? true : false}
-			direction="top"
-			height="85px"
-			width="165px"
-			onMouseEnter={() => {setAnimateBubbleRules(true); setHoverRules(true)}}
-			onMouseLeave={() => {setAnimateBubbleRules(false); setHoverRules(false)}}
-			onClick={displayRulesClick}>
-				Rules
+				activate={hoverDownScroll ? true : false}
+				direction="top"
+				height="85px"
+				width="165px"
+				onMouseEnter={() => setHoverRules(true)}
+				onMouseLeave={() => setHoverRules(false)}
+				onClick={handleClickRules}
+				>Rules
 			</LinkInWater>
 		)
 	}
 
-	// console.log(history)
-
 	return (
-		<header style={{display: displayHeader ? "block" : "none"}}>
-			<Wave animation={animationWave}>
+		<header>
+			<Wave animation={waveAnimation}>
+
 				<div className={classesContainerLogo.join(' ')}>
 					<div className={splashLogo ? classes.SplashLogo: classes.displayNone}>
 						<img width="100%" src={splashLogoImg} alt="splash logo"></img>
 					</div>
 					<Logo 
-						transition={animationWave === 'top' ? 'all 1s ease-in, color 0s' : 'all 2.5s ease-in, color 0s'}
-						type={animationWave === 'top' ? 'logo' : "text"}
+						transition={isTop ? 'all 1s ease-in, color 0s' : 'all 2s ease-in, color 0s'}
+						type={isTop ? 'logo' : "text"}
 						height={logoHeight}
 						color={splashLogo ? "" : "white"}
 					/>
 				</div>
-				<div className={[classes.buttonLoginContainer, animationWave === 'top' ? classes.buttonLoginContainerTop : ''].join(' ')}>
-					<BubbleEffect animate={animateBubbleLogin}>
-					<div className={[classes.LinkContainer, opacityLinkContainer ? classes.LinkContainerShow : ' '].join(' ')}>
-							<LinkInWater 
-								direction="left"
-								height="85px"
-								width="173px"
-								onMouseEnter={() => setAnimateBubbleLogin(true)}
-								onMouseLeave={() => setAnimateBubbleLogin(false)}
-								onClick={handleClickLogin}>
-									Login
-							</LinkInWater>
-						</div>
-					</BubbleEffect>
+
+				<div className={[classes.ButtonLoginContainer, isTop ? classes.ButtonLoginContainerTop : ''].join(' ')}>
+					<LinkInWater
+						direction="left"
+						height="85px"
+						width="173px"
+						onClick={handleClickLogin}
+						>Login
+					</LinkInWater>
 				</div>
-				<div className={[classes.buttonSignupContainer, animationWave === 'top' ? classes.buttonSignUpContainerTop : ''].join(' ')}>
-					<BubbleEffect animate={animateBubbleSignUp}>
-						<div className={[classes.LinkContainer, opacityLinkContainer ? classes.LinkContainerShow : ' '].join(' ')}>
-							<LinkInWater
-							direction="right"
-							height="85px"
-							width="218px"
-							onMouseEnter={() => setAnimateBubbleSignUp(true)}
-							onMouseLeave={() => setAnimateBubbleSignUp(false)}
-							onClick={handleClickSignUp}>
-								SignUp
-							</LinkInWater>
-						</div>
-					</BubbleEffect>
+
+				<div className={[classes.ButtonSignupContainer, isTop ? classes.ButtonSignUpContainerTop : ''].join(' ')}>
+					<LinkInWater
+						direction="right"
+						height="85px"
+						width="218px"
+						onClick={handleClickSignUp}
+						>SignUp
+					</LinkInWater>
 				</div>
-				<div className={[classes.buttonRulesContainer, animationWave === 'top' ? classes.buttonRulesContainerTitle : ''].join(' ')}>
-					<BubbleEffect animate={animateBubbleRules}>
-						<div className={[classes.LinkContainer, opacityLinkContainer ? classes.LinkContainerShow : ' '].join(' ')}>
-							{rulesTitle}
-						</div>
-					</BubbleEffect>
+
+				<div className={[classes.ButtonRulesContainer, isTop ? classes.ButtonRulesContainerTitle : ''].join(' ')}>
+						{rulesTitle}
 				</div>
+
 			</Wave>
-			<div
-				className={classesScrollDown.join(' ')}
-				style={{display: animationWave === "close" ? "none" : 'flex'}}>
+
+			<div className={classesScrollDown.join(' ')}>
 				<Arrow 
-					onMouseEnter={() => {setAnimateBubbleRules(true); setHoverDownScroll(true)}}
-					onMouseLeave={() => {setAnimateBubbleRules(false); setHoverDownScroll(false)}}
-					onClick={displayRulesClick}
+					onMouseEnter={() => {setHoverDownScroll(true)}}
+					onMouseLeave={() => {setHoverDownScroll(false)}}
+					onClick={handleClickRules}
 					downLandingActivate={hoverRules} 
-					style="DownLanding" 
+					type="DownLanding" 
 					dir="down"/>
 			</div>
 		</header>
-	)
+	);
+};
 
-	// return (
-	// 	<header>
-	// 		<div className={classes.HeaderContainer}>
-	// 			<Link to='/' style={{ textDecoration: 'none' }}>
-	// 				{/* <div className={classes.LogoContainer}>
-	// 					<img src={logoWithoutNumber} alt="Logo" />
-	// 					<div className={classes.LogoText}>uizzi <span>19</span></div>
-	// 				</div> */}
-	// 				logo
-	// 			</Link>
-	// 			<div className={classes.ConnexionContainer}>
-	// 				<Link to='/login'>
-	// 					<button>Connexion</button>
-	// 				</Link>
-	// 				<Link to='/signup'>
-	// 					<button>Inscription</button>
-	// 				</Link>
-	// 				<Link to='/'>
-	// 					<button onClick={handleDisconnect}>Deconnexion</button>
-	// 				</Link>
-	// 			</div>
-	// 		</div>
-	// 	</header>
-	// )
-}
+export default HeaderWave;

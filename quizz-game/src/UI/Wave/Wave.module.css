@@ -1,20 +1,24 @@
-/*  */
-.HeaderContainerWave { /* OK but modifise  */
-	height: 100vh;
-	overflow: hidden;
+/* Header Static */
+
+.WaveContainer {
+	height: 90vh;
+	overflow: visible;
 	position: relative;
-	top: -100vh;
-	transition: all 1.2s ease-in-out;
+	/* top: -100vh; */
+	/* transition: all 1.2s ease-in-out; */
 	-webkit-user-select: none;
     -khtml-user-select: none;
     -moz-user-select: none;
     -o-user-select: none;
 	user-select: none;
-	overflow: visible;
+	/* overflow: visible; */
 	/* background: linear-gradient( var(--quizzy-secondary-color), var(--quizzy-primary-color)); */
+
+
+	/* background: blue; */
 }
 
-.HeaderContainerWave::before{
+.WaveContainer::before{
 	content: "";
 	position: absolute;
 	left: 0;
@@ -26,21 +30,16 @@
 	transform: scaleX(1.7);
 }
 
-
-.HeaderContainerWaveAnimationClose {
-	top:0vh;
+.ContentContainer {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 25;
+	width: 100%;
+	height: 100%;
 }
 
-.HeaderContainerWaveAnimationHeight {
-	height: 85vh;
-	top:0vh;
-}
-
-.HeaderContainerWaveAnimationTop {
-	height: 165px;
-}
-
-.Line { /* OK */
+.Line {
 	position: absolute;
 	width: 100%;
 	overflow: hidden;
@@ -51,21 +50,21 @@
 	background: linear-gradient( var(--quizzy-secondary-color), var(--quizzy-primary-color));
 }
 
-.Line1 { /* OK */
+.Line1 {
 	z-index: 15;
 	opacity: 0.5;
 }
 
-.Line2 { /* OK */
+.Line2 {
 	z-index: 10;
 	opacity: 0.7;
 }
 
-.Line3 { /* OK */
+.Line3 {
 	z-index: 5;
 }
 
-.Wave { /* OK */
+.Wave {
 	position: absolute;
 	left: 0px;
 	width: 200%;
@@ -75,27 +74,27 @@
 	transform-origin: center bottom;
 }
 
-.Wave1{ /* OK */
+.Wave1{
 	background-image: url(../../assets/imgs/headerWaves/wave1.png);
 	-webkit-background-size: 50% 80px;
 	background-size: 50% 80px;
 }
 
-.Wave2{ /* OK */
+.Wave2{
 	background-image: url(../../assets/imgs/headerWaves/wave2.png);
 	-webkit-background-size: 50% 100px;
 	background-size: 50% 100px;
 	animation: animate 12s linear infinite;
 }
 
-.Wave3{ /* OK */
+.Wave3{
 	background-image: url(../../assets/imgs/headerWaves/wave3.png);
 	-webkit-background-size: 50% 80px;
 	background-size: 50% 80px;
 	animation: animate 18s linear infinite;
 }
 
-@keyframes animate{ /* OK */
+@keyframes animate{
 	0% {
 		transform: translateX(0) translateZ(0) scaleY(1)
 	}
@@ -105,4 +104,96 @@
 	100% {
 		transform: translateX(-50%) translateZ(0) scaleY(1)
 	}
+}
+
+/*------------ Animations -------------*/
+
+/* Open Init */
+
+.OpenHide {
+	height: 90vh;
+	top: -10000px;
+}
+
+.OpenNotHide {
+	height: 90vh;
+	top: 0px;
+}
+
+/* Top Init */
+
+.TopHide {
+	height: 165px;
+	top: -165px;
+}
+
+.TopNotHide {
+	height: 165px;
+	top: 0px;
+}
+
+
+/* Animation CloseToOpenAndReduce */
+
+.CloseToOpenAndReduceInit {
+	top: -100vh;
+	height: 105vh;
+}
+
+.CloseToOpenAndReduceAnimate {
+	top: 0vh;
+	height: 90vh;
+	transition: top ease-in-out 1s 0s, height 1s ease-in-out 1s;
+}
+
+/* Animation Open */
+
+.CloseToOpen {
+	top: 0vh;
+	transition: top ease-in-out 1s;
+}
+
+.TopToOpen {
+	height: 90vh;
+	transition: height ease-in-out 1s;
+}
+
+/* Animation Close */
+
+.OpenToClose {
+	top: -90vh;
+	transition: top ease-in-out 1s;
+}
+
+.TopToClose {
+	top: -165px;
+	transition: top ease-in-out 0.6s;
+}
+
+/* Animation Top  */
+
+.OpenToTop {
+	height: 165px;
+	transition: height ease-in-out 1s;
+}
+
+.CloseToTop {
+	top: 0vh;
+	transition: top ease-in-out 1s;
+}
+
+
+/* Animation CloseToTop */
+
+.CloseToTopAnimate {
+	top: -165px;
+	transition: top ease-in-out 1s;
+}
+
+.DisplayNone {
+	display: none;
+}
+
+.DisplayBlock {
+	display: block;
 }

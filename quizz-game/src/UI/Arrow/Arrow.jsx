@@ -13,7 +13,7 @@ export const Arrow = (props) => {
 
 	const classeStyle = []
 
-	if (props.style === "DownLanding") {
+	if (props.type === "DownLanding") {
 		classeStyle.push(props.downLandingActivate === true ? classes.StyleDownLandingActivate : classes.StyleDownLanding)
 	}
 

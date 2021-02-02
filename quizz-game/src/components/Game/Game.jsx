@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { UserContext } from '../../UserSession/UserContext'
-import {HeaderWave2} from '../../UI/Components'
+import {HeaderWave} from '../../UI/Components'
 
 const Game = (props) => {
 
@@ -18,7 +18,7 @@ const Game = (props) => {
 	// 	</div>
 	// );
 
-	return <HeaderWave2 />
+	return <HeaderWave />
 };
 
 export default Game;

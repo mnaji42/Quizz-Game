@@ -1,25 +1,14 @@
-.HeaderContainer {
-	height: var(--header-height);
-	/* background: var(--primary-color); */
-	/* border-bottom: 1px solid var(--primary-color); */
-	/* color: #FFFFFF; */
-	display: flex;
-}
-
-.ConnexionContainer {
-	margin-left: auto;
-	background-image: url(../../assets/logos/logo_quizz_color.png);
-}
+/* Logo */
 
 .LogoContainer {
 	position: absolute;
 	z-index: 99;
 	top: -20px;
 	left: 50%;
-	width: 750px;
+	width: 1000px;
 	/* transform: translate(-50%, -50%) rotate(0deg); */
 	transform: skewX(-20deg);
-	transition: all 2s ease-in, transform ease-in-out 2.5s;
+	transition: all 2s ease-in, transform ease-in-out 2s;
 	display: flex;
 	justify-content: center;
 }
@@ -27,7 +16,7 @@
 .LogoContainerAnimate {
 	top: 30%;
 	transform: translate(-50%, -50%) rotate(0deg);
-	transition: all 2s ease-out 0.5;
+	transition: all 2s ease-out;
 }
 
 .ContainerLogoTopLeft {
@@ -38,48 +27,70 @@
 	transition: all 1s ease-in;
 }
 
-.buttonLoginContainer {
+.SplashLogo img {
+	user-drag: none; 
+	user-select: none;
+	-moz-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+}
+
+.SplashLogo {
+	z-index: 100;
+	position: absolute;
+	left: -48px;
+	top: -290px;
+	/* transform: translate(-50%, -50%); */
+}
+
+/* Link */
+
+.ButtonLoginContainer {
 	position: absolute;
 	z-index: 99;
-	bottom: 25%;
+	bottom: 23%;
 	right: 68%;
 	/* transform: translateX(85%); */
 }
 
-.buttonLoginContainerTop {
+.ButtonLoginContainerTop {
 	bottom: 50px;
 	right: 60%;
 	transition: all 1s ease-in;
 	/* transform: translateX(85%); */
 }
 
-.buttonSignupContainer {
+.ButtonSignupContainer {
 	position: absolute;
 	z-index: 99;
-	bottom: 25%;
+	bottom: 23%;
 	left: 68%;
 	transition: all 1s ease-in;
 	/* transform: translateX(-85%); */
 }
 
-.buttonSignUpContainerTop {
+.ButtonSignUpContainerTop {
 	bottom: 50px;
 	left: 60%;
 	/* transform: translateX(85%); */
 }
 
-.buttonRulesContainer {
+.ButtonRulesContainer {
 	position: absolute;
 	z-index: 99;
-	bottom: 35%;
+	bottom: 33%;
 	left: 50%;
     transform: translateX(-50%);
 }
 
-.buttonRulesContainerTitle {
+.ButtonRulesContainerTitle {
 	bottom: -100px;
 	transition: all 1s ease-in-out;
 }
+
+
+/* ScrollDown */
 
 .ScrollDownContainer {
 	position: fixed;
@@ -98,32 +109,7 @@
 	transition: all 1.5s ease-out 1.5s;
 }
 
-.SplashLogo img {
-	user-drag: none; 
-	user-select: none;
-	-moz-user-select: none;
-	-webkit-user-drag: none;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-}
-
-.SplashLogo {
-	z-index: 100;
-	position: absolute;
-	left: -85px;
-	top: -245px;
-	/* transform: translate(-50%, -50%); */
-}
 
 .displayNone {
 	display: none;
-}
-
-.LinkContainer {
-	opacity: 0;
-	transition: all 2.5s ease-in-out;
-}
-
-.LinkContainerShow {
-	opacity: 1;
 }

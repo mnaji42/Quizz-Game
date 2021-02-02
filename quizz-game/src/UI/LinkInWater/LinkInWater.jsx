@@ -1,11 +1,13 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect } from 'react';
 import classes from './LinkInWater.module.css'
 import splashLink from '../../assets/imgs/white_splash_link.png'
+import { BubbleEffect } from '../Components'
 
 export const LinkInWater = (props) => {
 
 	const [displaySplash, setDisplaySplash] = useState(false)
-	const [timeout, setTimeout] = useState()
+	const [opacityLinkContainer, setOpacityLinkContainer] = useState(false)
+	const [animateBubble, setAnimateBubble] = useState(true)
 
 	const stylesContainer =  {
 		height: props.height,
@@ -16,12 +18,13 @@ export const LinkInWater = (props) => {
 
 	useEffect(() => {
 
-		console.log(timeout)
-
-		return function () {
-			console.log(timeout)
-			clearTimeout(timeout)
+		setOpacityLinkContainer(true)
+		const timer = setTimeout(() => setAnimateBubble(false), 3000);
+		return () => {
+			clearTimeout(timer)
+			setAnimateBubble(false)
 		}
+
 	},[])
 
 	const classesLink = [classes.LinkHeaderWave]
@@ -35,6 +38,18 @@ export const LinkInWater = (props) => {
 		if (props.onClick) {
 			props.onClick()
 		}
+	}
+
+	const handleOnMouseEnter = () => {
+		setAnimateBubble(true)
+		if (props.onMouseEnter)
+			props.onMouseEnter()
+	}
+
+	const handleOnMouseLeave = () => {
+		setAnimateBubble(false)
+		if (props.onMouseLeave)
+			props.onMouseLeave()
 	}
 
 	if (props.activate) {
@@ -52,18 +67,21 @@ export const LinkInWater = (props) => {
 	}
 
 	return (
-		<>
-			<div
-				style={stylesContainer}
-				className={classes.Container}
-				onClick={handleClick}
-				onMouseEnter={props.onMouseEnter}
-				onMouseLeave={props.onMouseLeave}>
-				<div className={classesLink.join(' ')}aria-label={props.children}></div>
-				<div className={classesSubLine.join(' ')}></div>
-				<img className={[classes.WhiteSplashLink, displaySplash ? classes.DisplayBlock : ""].join(' ')} src={splashLink}></img>
-			</div>
-		</>
+		<div className={[classes.LinkContainer, opacityLinkContainer ? classes.LinkContainerShow : ' '].join(' ')}>
+			<BubbleEffect animate={props.activate ? true : animateBubble}>
+				<div
+					style={stylesContainer}
+					className={classes.Container}
+					onClick={handleClick}
+					onMouseEnter={handleOnMouseEnter}
+					onMouseLeave={handleOnMouseLeave}
+					>
+					<div className={classesLink.join(' ')}aria-label={props.children}></div>
+					<div className={classesSubLine.join(' ')}></div>
+					<img className={[classes.WhiteSplashLink, displaySplash ? classes.DisplayBlock : ""].join(' ')} src={splashLink} alt='splashLink'></img>
+				</div>
+			</BubbleEffect>
+		</div>
 	);
 };
 

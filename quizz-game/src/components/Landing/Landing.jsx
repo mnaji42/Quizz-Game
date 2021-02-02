@@ -4,6 +4,7 @@ import { HeaderWave, Footer} from '../../UI/Components'
 const Landing = (props) => {
 	return (
 		<>
+			<HeaderWave />
 			{/* <BubbleBackground activate={false} /> */}
 			{/* <HeaderWave history={props.history} /> */}
 			<div>
