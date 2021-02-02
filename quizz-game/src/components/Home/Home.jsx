@@ -1,10 +1,9 @@
-import React, { useContext } from 'react';
+import React, {useContext} from 'react';
+import classes from './Home.module.css'
 import { UserContext } from '../../UserSession/UserContext'
 import { FirebaseContext } from '../../Firebase/index'
-import {HeaderWave} from '../../UI/Components'
 
-const Game = (props) => {
-
+const Home = () => {
 	const user = useContext(UserContext)
 	const firebase = useContext(FirebaseContext)
 
@@ -16,11 +15,11 @@ const Game = (props) => {
 
 	return (
 		<div>
+			<h1>HOME</h1>
 			{user.isConnected && <h2>Hello {user.data.pseudo}</h2>}
 			<button onClick={firebase.signOut}>signout</button>
 		</div>
 	);
-
 };
 
-export default Game;
+export default Home;

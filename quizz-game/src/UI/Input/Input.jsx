@@ -5,6 +5,7 @@ export const Input = (props) => {
 	return (
 		<div className={classes.InputContainer}>
 			<input
+				ref={props.inputRef}
 				className={classes.Input}
 				type={props.type}
 				id={props.id}

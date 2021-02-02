@@ -5,6 +5,7 @@ import Game from './components/Game/Game'
 import Connexion from './components/Connexion/Connexion'
 import Subscription from './components/Subscription/Subscription'
 import ForgetPassword from './components/ForgetPassword/ForgetPassword'
+import Home from './components/Home/Home'
 import { PageNotFound } from './UI/Components'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import  { UserContext } from './UserSession/UserContext'
@@ -54,6 +55,7 @@ function App() {
       <UserContext.Provider value={user}>
           <Switch>
             <Route exact path='/' component={Landing}/>
+            <Route exact path='/home' component={Home}/>
             <Route exact path='/game' component={Game}/>
             <Route exact path='/login' component={Connexion}/>
             <Route exact path='/signup' component={Subscription}/>

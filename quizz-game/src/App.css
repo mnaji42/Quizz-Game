@@ -10,6 +10,9 @@
   --quizzy-primary-color-opacity: rgba(34, 183, 206, 0.2);
   --quizzy-secondary-color-opacity: rgba(86, 45, 129, 0.2);
 
+  --success-color: #4BB543;
+  --error-color: #B00020;
+
   --background-color: #FFFFFF;
 }
 

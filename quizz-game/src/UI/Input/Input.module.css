@@ -1,5 +1,5 @@
 .InputContainer {
-	cursor: pointer;
+	/* cursor: pointer; */
 	width: 400px;
 	height: 90px;
 	/* background: blue; */
@@ -53,7 +53,7 @@
 	color: #272727;
 }
 
-.InputContainer:hover .Input {
+.Input:hover {
 	border-bottom: 3px solid #272727;
 	box-shadow: 5px 10px 10px rgba(0,0,0,0.2);
 	background: rgba(255,255,255,255, 0.2);

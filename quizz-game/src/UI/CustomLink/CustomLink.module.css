@@ -1,0 +1,31 @@
+.CustomLink {
+	display: inline-block;
+	text-decoration: none;
+	color: var(--grey-color-1);
+}
+
+.CustomLink::after {
+	content: '';
+	display: block;
+	widows: auto;
+	transform: scaleX(0);
+	height: 2px;
+	background: var(--quizzy-secondary-color);
+	transition: transform 0.3s;
+}
+
+.CustomLink:hover {
+	color: var(--quizzy-secondary-color);
+}
+
+.CustomLink:hover::after {
+	transform: scaleX(1);
+}
+
+.CustomLink:active {
+	color: var(--quizzy-primary-color);
+}
+
+.CustomLink:active::after {
+	background: var(--quizzy-primary-color);
+}

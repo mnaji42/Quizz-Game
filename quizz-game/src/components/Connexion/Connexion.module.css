@@ -25,3 +25,13 @@
 	display: flex;
 	justify-content: center;
 }
+
+.LinksContainer {
+	margin-top: 14px;
+	text-align: center;
+	font-size: 21px;
+}
+
+.LinksContainer div{
+	margin-bottom: 8px;
+}
