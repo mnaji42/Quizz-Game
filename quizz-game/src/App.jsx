@@ -52,7 +52,7 @@ function App() {
   return (
     <BrowserRouter>
       <UserContext.Provider value={user}>
-        <HeaderWave />
+        {/* <HeaderWave /> */}
           <Switch>
             {/* <Route exact path='/' component={Header}/> */}
             <Route exact path='/' component={Landing}/>

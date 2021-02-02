@@ -59,7 +59,7 @@ export const Wave = (props) => {
 			{props.children}
 
 			{lines}
-			</div>
+		</div>
 	);
 };
 
