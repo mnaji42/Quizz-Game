@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React from 'react'
 import './App.css';
 import Landing from './components/Landing/Landing'
 import Game from './components/Game/Game'
@@ -6,63 +6,34 @@ import Connexion from './components/Connexion/Connexion'
 import Subscription from './components/Subscription/Subscription'
 import ForgetPassword from './components/ForgetPassword/ForgetPassword'
 import Home from './components/Home/Home'
-import { PageNotFound } from './UI/Components'
+import PageNotFound from './components/PageNotFound/PageNotFound'
+import ConfirmEmail from './components/ConfirmEmail/ConfirmEmail'
+import RedirectRoute from './CustomRouter/RedirectRoute'
+import PrivateRoute from './CustomRouter/PrivateRoute'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import  { UserContext } from './UserSession/UserContext'
-import { FirebaseContext } from './Firebase/index'
+import { useCurrentUser } from './customHooks/hooks'
+import { MessageProvider } from './context/MessageContext'
 
 function App() {
 
-  const firebase = useContext(FirebaseContext)
-  const [user, setUser] = useState({
-    isConnected: false,
-    data: null
-  })
+  const currentUser = useCurrentUser()
 
-  useEffect(() => {
-
-		let listener = firebase.auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log('i am here')
-        firebase.user(user.uid).get()
-        .then((doc) => {
-          if (doc && doc.exists) {
-            setUser({
-              isConnected: true,
-              data: doc.data()
-            })
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-      }
-      else {
-        setUser({
-          isConnected: false,
-          data: null
-        })
-      }
-		})
-
-		return () => {
-			listener()
-		}
-  }, [])
+  console.log('current user:', currentUser)
 
   return (
     <BrowserRouter>
-      <UserContext.Provider value={user}>
-          <Switch>
-            <Route exact path='/' component={Landing}/>
-            <Route exact path='/home' component={Home}/>
-            <Route exact path='/game' component={Game}/>
-            <Route exact path='/login' component={Connexion}/>
-            <Route exact path='/signup' component={Subscription}/>
-            <Route exact path='/forgetpassword' component={ForgetPassword}/>
-            <Route component={PageNotFound}/>
-          </Switch>
-      </UserContext.Provider>
+      <MessageProvider>
+        <Switch>
+          <Route exact path='/' component={Landing}/>
+          <PrivateRoute exact path= '/home' component={Home}/>
+          <PrivateRoute exact path= '/game' component={Game}/>
+          <RedirectRoute redirectIf={currentUser.auth} redirectTo='/home' exact path= '/login' component={Connexion}/>
+          <RedirectRoute redirectIf={currentUser.auth} redirectTo='/home' exact path= '/signup' component={Subscription}/>
+          <RedirectRoute redirectIf={currentUser.auth} redirectTo='/home' exact path= '/forgetpassword' component={ForgetPassword}/>
+          <RedirectRoute redirectIf={currentUser.auth && currentUser.auth.emailVerified} redirectTo='/home' exact path='/confirm-email' component={ConfirmEmail}/>
+          <Route component={PageNotFound}/>
+        </Switch>
+      </MessageProvider>
     </BrowserRouter>
   );
 }

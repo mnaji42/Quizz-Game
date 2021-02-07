@@ -3,15 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Firebase, {FirebaseContext} from './Firebase/index'
+import { CurrentUserProvider } from './context/CurrentUserContext'
 
 require('dotenv').config()
 
 ReactDOM.render(
   <React.StrictMode>
-    <FirebaseContext.Provider value={new Firebase()}>
+    <CurrentUserProvider>
       <App />
-    </FirebaseContext.Provider>
+    </CurrentUserProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );

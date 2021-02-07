@@ -14,7 +14,7 @@ export const BlobButton = (props) => {
 
 	return (
 		<>
-		<button className={classesBlobBtn.join(' ')}>
+		<button disabled={props.spinner} className={classesBlobBtn.join(' ')}>
 			{content}
 			<span className={classes.BlobBtnInner}>
 			<span className={classes.BlobBtnBlobs}>

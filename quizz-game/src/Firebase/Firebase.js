@@ -1,37 +1,18 @@
-import app from 'firebase/app'
+import firebase from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firestore'
 
-const config = {
-    apiKey: process.env.REACT_APP_API_KEY,
+const app = firebase.initializeApp({
+	apiKey: process.env.REACT_APP_API_KEY,
     authDomain: process.env.REACT_APP_AUTH_DOMAIN,
     projectId: process.env.REACT_APP_PROJECT_ID,
     storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
     messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
     appId: process.env.REACT_APP_APP_ID
-};
 
-class Firebase {
+})
 
-	constructor() {
-		app.initializeApp(config)
-		this.auth = app.auth()
-		this.db = app.firestore()
-	}
+export const auth = app.auth()
+export const firestore = app.firestore()
 
-	// subscription
-	subscription = (email, password) => this.auth.createUserWithEmailAndPassword(email, password)
-
-	// connexion
-	connexion = (email, password) => this.auth.signInWithEmailAndPassword(email, password)
-
-	// signOut
-	signOut = () => this.auth.signOut()
-
-	//ResetPasword
-	resetPassword = email => this.auth.sendPasswordResetEmail(email)
-
-	user = (uid) => this.db.doc(`users/${uid}`)
-}
-
-export default Firebase
+export default app

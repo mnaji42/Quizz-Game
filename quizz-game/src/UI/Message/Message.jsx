@@ -14,7 +14,7 @@ export const Message = (props) => {
 		let timer = null
 		if (props.message.message !== '') {
 			setShowContainer(true)
-			timer = setTimeout(() => {setShowContainer(false)}, 6000)
+			timer = setTimeout(() => {setShowContainer(false)}, 10000)
 		}
 
 		return () => {
@@ -28,7 +28,7 @@ export const Message = (props) => {
 
 	if (props.message.type === 'success') {
 		classContainer.push(classes.MessageContainerSuccess)
-		icon = <Icon width="26px" icon={successStandardLine} color="#4BB543" />
+		icon = <Icon height="26px" icon={successStandardLine} color="#4BB543" />
 	}
 
 	if (props.message.type === 'error') {

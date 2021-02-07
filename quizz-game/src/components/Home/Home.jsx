@@ -1,11 +1,17 @@
-import React, {useContext} from 'react';
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import classes from './Home.module.css'
-import { UserContext } from '../../UserSession/UserContext'
-import { FirebaseContext } from '../../Firebase/index'
+import { useAuth, useCurrentUser } from '../../customHooks/hooks'
+// import { AuthContext } from '../../UserSession/Auth'
+// import { FirebaseContext } from '../../Firebase/index'
 
 const Home = () => {
-	const user = useContext(UserContext)
-	const firebase = useContext(FirebaseContext)
+	// const user = useContext(AuthContext)
+	// const firebase = useContext(FirebaseContext)
+
+	const currentUser = useCurrentUser()
+	const { logout } = useAuth()
+	const history = useHistory()
 
 	console.log()
 
@@ -13,11 +19,16 @@ const Home = () => {
 	// 	props.history.push('/login')
 	// }
 
+	const handleLogout = () => {
+		logout()
+		history.push('/')
+	}
+
 	return (
 		<div>
 			<h1>HOME</h1>
-			{user.isConnected && <h2>Hello {user.data.pseudo}</h2>}
-			<button onClick={firebase.signOut}>signout</button>
+			{<h2>Hello {currentUser.data && currentUser.data.pseudo}</h2>}
+			<button onClick={handleLogout}>signout</button>
 		</div>
 	);
 };

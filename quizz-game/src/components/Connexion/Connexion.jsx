@@ -1,34 +1,30 @@
-import React, { useState, useContext, useRef } from 'react';
-import { useHistory, Redirect} from 'react-router-dom'
-import { FirebaseContext } from '../../Firebase/index'
-import { UserContext } from '../../UserSession/UserContext'
-import {BubbleBackground, Arrow, Title, Input, BlobButton, CustomLink, Message} from '../../UI/Components'
+import React, { useState, useRef } from 'react';
+import { useHistory } from 'react-router-dom'
+import {BubbleBackground, Arrow, Title, Input, BlobButton, CustomLink} from '../../UI/Components'
+import { useAuth, useMessage } from '../../customHooks/hooks'
 
 import classes from './Connexion.module.css'
 
-const Connexion = (props) => {
+const Connexion = () => {
 
-	const user = useContext(UserContext)
 	const history = useHistory()
 	const [mail, setMail] = useState('')
 	const [password, setPassword] = useState('')
-	const [message, setMessage] = useState({type: '', message: ''})
+	const setMessage = useMessage()
 	const [buttonLoading, setButtonLoading] = useState(false)
-	const firebase = useContext(FirebaseContext)
+	const { login } = useAuth()
 
 	const emailRef = useRef();
 	const passwordRef = useRef();
 
-	if (user.isConnected) {
-		return <Redirect to="/home"/>
-	}
-
 	const handleSubmit = (event) => {
 		event.preventDefault()
+		
 		setButtonLoading(true)
-		firebase.connexion(mail, password)
+
+		login(mail, password)
 		.then( user => {
-			props.history.push('./game')
+			history.push('/game')
 		})
 		.catch( error => {
 			if (error.code === "auth/user-not-found") {
@@ -48,15 +44,14 @@ const Connexion = (props) => {
 				setPassword('')
 				emailRef.current.focus();
 			}
+			setButtonLoading(false)
 		})
-		setButtonLoading(false)
 	}
 
 	return (
 		<>
-		<BubbleBackground />
+			<BubbleBackground />
 			<div className={classes.ConnexionContainer}>
-				<Message message={message} />
 				<div className={classes.ArrowBackContainer}>
 					<Arrow dir="left" onClick={() => history.push('/')} background="quizzy" size="big"/>
 				</div>
@@ -87,7 +82,7 @@ const Connexion = (props) => {
 							Password
 						</Input>
 						<div className={classes.BlobButtonContainer}>
-							<BlobButton spinner={buttonLoading}>LOGIN</BlobButton>
+							<BlobButton type='submit' spinner={buttonLoading}>LOGIN</BlobButton>
 						</div>
 					</form>
 					<div className={classes.LinksContainer}>
@@ -104,4 +99,4 @@ const Connexion = (props) => {
 	);
 };
 
-export default Connexion;
+export default Connexion

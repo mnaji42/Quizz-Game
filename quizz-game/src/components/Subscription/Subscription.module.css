@@ -1,0 +1,36 @@
+.ArrowBackContainer {
+	/* margin: 27px; */
+	height: 70px;
+	padding: 27px;
+	position: fixed;
+	top: 0px;
+	left: 0px;
+}
+
+.SubscriptionContainer {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ConnexionSubContainer {
+	padding: 54px;
+}
+
+.BlobButtonContainer {
+	margin-top: 54px;
+	display: flex;
+	justify-content: center;
+}
+
+.LinksContainer {
+	margin-top: 14px;
+	text-align: center;
+	font-size: 21px;
+}
+
+.LinksContainer div{
+	margin-bottom: 8px;
+}

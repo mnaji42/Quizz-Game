@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
-import { UserContext } from '../../UserSession/UserContext'
-import { FirebaseContext } from '../../Firebase/index'
-import {HeaderWave} from '../../UI/Components'
+import { useAuth, useCurrentUser } from '../../customHooks/hooks'
+// import { AuthContext } from '../../UserSession/Auth'
+// import { FirebaseContext } from '../../Firebase/index'
+// import {HeaderWave} from '../../UI/Components'
 
 const Game = (props) => {
 
-	const user = useContext(UserContext)
-	const firebase = useContext(FirebaseContext)
+	// const user = useContext(AuthContext)
+	// const firebase = useContext(FirebaseContext)
+	const { logout } = useAuth()
+	const currentUser = useCurrentUser()
 
 	console.log()
 
@@ -16,8 +19,8 @@ const Game = (props) => {
 
 	return (
 		<div>
-			{user.isConnected && <h2>Hello {user.data.pseudo}</h2>}
-			<button onClick={firebase.signOut}>signout</button>
+			{currentUser && currentUser.data && <h2>Hello {currentUser.data.pseudo}</h2>}
+			<button onClick={logout}>signout</button>
 		</div>
 	);
 

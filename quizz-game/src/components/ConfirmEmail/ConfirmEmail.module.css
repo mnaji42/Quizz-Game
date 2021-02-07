@@ -1,0 +1,34 @@
+.ConfirmEmailContainer {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
+}
+
+.ConfirmEmailSubContainer {
+	text-align: center;
+}
+
+.Text {
+	font-size: 27px;
+}
+
+.Bold {
+	font-weight: bold;
+}
+
+.LinksContainer {
+	margin-top: 54px;
+}
+
+.LinkContainer {
+	margin-top: 12px;
+	font-size: 27px;
+}
+
+.LinkLogoutContainer {
+	font-size: 24px;
+	position: fixed;
+	top: 27px;
+	right: 54px;
+}

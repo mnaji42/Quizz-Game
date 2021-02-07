@@ -1,11 +1,11 @@
 import React, { useState, useContext } from 'react';
 import classes from './ForgetPassword.module.css'
-import { FirebaseContext } from '../../Firebase/index'
+// import { FirebaseContext } from '../../Firebase/index'
 
 const ForgetPassword = () => {
 
 	const [mail, setMail] = useState('')
-	const firebase = useContext(FirebaseContext)
+	// const firebase = useContext(FirebaseContext)
 	const [response, setResponse] = useState({
 		type: '',
 		message: ''
@@ -13,21 +13,22 @@ const ForgetPassword = () => {
 
 	const handleSubmit = (event) => {
 		event.preventDefault()
-		firebase.resetPassword(mail)
-		.then(() => {
-			setResponse({
-				type: "SUCCESS",
-				message: "Un mail vous a été envoyé"
-			})
-			setMail("")
-		})
-		.catch((error) => {
-			setResponse({
-				type: "ERROR",
-				message: error.message
-			})
-			setMail("")
-		})
+		// firebase.resetPassword(mail)
+		// .then(() => {
+		// 	setResponse({
+		// 		type: "SUCCESS",
+		// 		message: "Un mail vous a été envoyé"
+		// 	})
+		// 	setMail("")
+		// })
+		// .catch((error) => {
+		// 	setResponse({
+		// 		type: "ERROR",
+		// 		message: error.message
+		// 	})
+		// 	setMail("")
+		// })
+		console.log('inscription')
 	}
 
 	return (
