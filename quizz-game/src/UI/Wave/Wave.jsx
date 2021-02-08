@@ -11,7 +11,6 @@ export const Wave = (props) => {
 
 	// Use useEffect to push the right classes for animation
 	useEffect(() => {
-		console.log('here:', props.animation)
 		if (props.animation && props.animation.pos && props.animation.anim){
 			if (props.animation.pos === 'close') {
 				if (props.animation.anim === 'open')

@@ -13,7 +13,7 @@ const ConfirmEmail = () => {
 	const emailRef = useRef()
 	const passwordRef = useRef()
 	const [loading, setLoading] = useState(false)
-	const { sendEmailVerification, logout, updateEmail, reauthenticate } = useAuth()
+	const { sendEmailVerification, logout, updateEmail } = useAuth()
 	const history = useHistory()
 	const setMessage = useMessage()
 
@@ -43,8 +43,6 @@ const ConfirmEmail = () => {
 		})
 	}
 
-	console.log('loading:', loading)
-
 	const handleUpdateMail = (e) => {
 		e.preventDefault()
 
@@ -54,20 +52,13 @@ const ConfirmEmail = () => {
 			setLoading(false)
 		}
 		else {
-			reauthenticate(password)
+			updateEmail(password, email)
 			.then(() => {
-				updateEmail(currentUser.auth, email)
-				.then(() => {
-					handleResendEmail()
-					setChangeEmail(false)
-				})
-				.catch((error) => {
-					setMessage({type: 'error', message: error.message})
-					setPassword('')
-					passwordRef.current.focus();
-					setLoading(false)
-				})
-			}).catch((error) => {
+				handleResendEmail()
+				setPassword('')
+				setChangeEmail(false)
+			})
+			.catch((error) => {
 				if (error.code === "auth/wrong-password") {
 					setMessage({type: 'error', message: 'The password is invalid.'})
 					setPassword('')

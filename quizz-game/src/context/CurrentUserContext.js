@@ -20,7 +20,6 @@ export const CurrentUserProvider = ({ children }) => {
 					setUserAuth(user)
 					setLoading(false)
 				}, (error) => {
-					console.log(error)
 					setUserData(null)
 					setUserAuth(null)
 					setLoading(false)

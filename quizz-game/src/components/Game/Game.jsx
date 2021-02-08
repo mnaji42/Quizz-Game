@@ -11,8 +11,6 @@ const Game = (props) => {
 	const { logout } = useAuth()
 	const currentUser = useCurrentUser()
 
-	console.log()
-
 	// if (!user.isConnected) {
 	// 	props.history.push('/login')
 	// }

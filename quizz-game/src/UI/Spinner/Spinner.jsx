@@ -5,11 +5,8 @@ export const Spinner = (props) => {
 
 	const spinnerClasses = []
 
-	console.log(props)
-
 	// Type
 	if (props.type === 'simple') {
-		console.log('yoyoyo')
 		spinnerClasses.push(classes.Simple)
 	}
 

@@ -31,7 +31,7 @@ class Auth {
 			.then(() => {
 				this.signup(email, password)
 				.then((user) => {
-					useFirestore().setUser(user.user.uid, {pseudo})
+					useFirestore().setUser(user.user.uid, {pseudo, email})
 					.then((user) => {
 						resolve(user)
 					})
@@ -62,24 +62,46 @@ class Auth {
 		return auth.sendPasswordResetEmail(email)
 	}
 
-	updateEmail = (userAuth, email) => {
-		return userAuth.updateEmail(email)
-	}
-
-	updatePassword = (userAuth, password) => {
-		return userAuth.updatePassword(password)
-	}
-
 	sendEmailVerification = (user) => {
 		return auth.currentUser.sendEmailVerification()
 	}
 
 	reauthenticate = (currentPassword) => {
-		var user = auth.currentUser;
-		var cred = firebase.auth.EmailAuthProvider.credential(
-			user.email, currentPassword);
-		return user.reauthenticateWithCredential(cred);
-	  }
+		var user = auth.currentUser
+		var cred = firebase.auth.EmailAuthProvider.credential(user.email, currentPassword)
+
+		return user.reauthenticateWithCredential(cred)
+	}
+
+	updatePassword = (currentPassword, newPassword) => {
+		return new Promise((resolve, reject) => {
+			this.reauthenticate(currentPassword)
+			.then(() => {
+				resolve(auth.currentUser.updatePassword(newPassword))
+			})
+			.catch((error) => {
+				reject(error)
+			})
+		})
+	}
+
+	updateEmail = (currentPassword, newEmail) => {
+		return new Promise((resolve, reject) => {
+			this.reauthenticate(currentPassword)
+			.then(() => {
+				auth.currentUser.updateEmail(newEmail)
+				.then(() => {
+					resolve(useFirestore().updateUser(auth.currentUser.uid, {email: newEmail}))
+				})
+				.catch((error) => {
+					reject(error)
+				})
+			})
+			.catch((error) => {
+				reject(error)
+			})
+		})
+	}
 }
 
 export function useAuth() {
