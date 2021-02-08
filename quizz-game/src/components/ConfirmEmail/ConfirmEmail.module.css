@@ -32,3 +32,13 @@
 	top: 27px;
 	right: 54px;
 }
+
+.ModaleContent {
+	text-align: left;
+}
+
+.BlobButtonContainer {
+	display: flex;
+	justify-content: center;
+	margin-top: 27px;
+}

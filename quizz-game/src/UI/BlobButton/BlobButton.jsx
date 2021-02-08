@@ -12,6 +12,14 @@ export const BlobButton = (props) => {
 		classesBlobBtn.push(classes.BlobBtnHover)
 	}
 
+	if (props.size === 'long') {
+		classesBlobBtn.push(classes.BlobBtnLong)
+	}
+
+	if (props.font === 'medium') {
+		classesBlobBtn.push(classes.BlobBtnMediumFont)
+	}
+
 	return (
 		<>
 		<button disabled={props.spinner} className={classesBlobBtn.join(' ')}>

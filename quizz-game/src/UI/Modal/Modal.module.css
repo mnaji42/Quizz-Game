@@ -1,0 +1,95 @@
+.ModalContainer {
+	position:fixed;
+	display:table;
+	width:100vw;;
+	height:100vh;
+	top:0;
+	left:0;
+	transform:scale(0);
+	z-index:1;
+	transform:scaleY(.01) scaleX(0);
+	animation:unfoldIn 0.6s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+.ModalBackground {
+	/* display:table-cell; */
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	background:rgba(0,0,0,0.4);
+	/* text-align:center;
+	vertical-align:middle; */
+}
+
+.ModalSubContainer {
+	width: 100vw;
+	height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.Modal {
+	background:#FAFAFA;
+	/* padding:50px; */
+	/* display:inline-block; */
+	border-radius:12px;
+	min-width: 400px;
+	border: 5px solid var(--grey-color-1);
+	box-shadow: 10px 10px 10px rgba(0,0,0,0.2);
+	/* font-weight:300; */
+	/* position:relative; */
+	transform:scale(0);
+	animation: zoomIn .3s .6s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;
+}
+
+.HeaderModal {
+	/* padding: 8px 27px; */
+	font-size: 27px;
+	text-align: left;
+	border-bottom: 3px solid var(--grey-color-1);
+	display: flex;
+	justify-content: space-between;
+}
+
+.ModalTitle {
+	font-family: 'Comic Sans MS';
+	font-size: 31px;
+	font-weight: 500;
+	text-align: left;
+	padding: 18px 27px;
+	color: var(--primary-color);
+	margin: 0px;
+}
+
+.IconClose {
+	cursor: pointer;
+}
+
+.ContentModal {
+	padding:27px;
+}
+
+  
+@keyframes unfoldIn {
+	0% {
+		transform:scaleY(.005) scaleX(0);
+	}
+	50% {
+		transform:scaleY(.005) scaleX(1);
+	}
+	100% {
+		transform:scaleY(1) scaleX(1);
+	}
+}
+
+@keyframes zoomIn {
+	0% {
+		transform:scale(0);
+	}
+	100% {
+		transform:scale(1);
+	}
+}

@@ -10,6 +10,7 @@
 	border-radius: 8px;
 	transition: top ease-in 0.3s;
 	max-width: 70vw;
+	z-index: 9999;
 }
 
 .MessageContainerShow {

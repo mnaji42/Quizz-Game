@@ -1,5 +1,6 @@
 import { auth } from '../firebase/firebase'
 import { useFirestore } from './useFirestore'
+import firebase from 'firebase/app'
 
 class Auth {
 	
@@ -72,6 +73,13 @@ class Auth {
 	sendEmailVerification = (user) => {
 		return auth.currentUser.sendEmailVerification()
 	}
+
+	reauthenticate = (currentPassword) => {
+		var user = auth.currentUser;
+		var cred = firebase.auth.EmailAuthProvider.credential(
+			user.email, currentPassword);
+		return user.reauthenticateWithCredential(cred);
+	  }
 }
 
 export function useAuth() {

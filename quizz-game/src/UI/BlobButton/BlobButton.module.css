@@ -111,3 +111,12 @@
 .BlobBtn:hover .BlobBtnBlob {
 	transform: translateZ(0) scale(1.7);
 }
+
+.BlobBtnLong {
+	width: 100%;
+}
+
+.BlobBtnMediumFont {
+	text-transform: initial;
+	font-size: 21px;
+}
