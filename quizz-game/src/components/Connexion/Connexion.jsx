@@ -38,6 +38,12 @@ const Connexion = () => {
 				setPassword('')
 				passwordRef.current.focus();
 			}
+			else if (error.code === "auth/invalid-email") {
+				setMessage({type: 'error', message: 'There is no user record corresponding to this identifier.'})
+				setMail('')
+				setPassword('')
+				emailRef.current.focus();
+			}
 			else {
 				setMessage({type: 'error', message: error.message})
 				setMail('')
@@ -61,14 +67,14 @@ const Connexion = () => {
 					<form onSubmit={handleSubmit}>
 						<Input
 							id="mail"
-							type="email"
+							type="text"
 							value={mail}
 							required={true}
 							onChange={(event)=> setMail(event.target.value)}
 							autoFocus={true}
 							inputRef ={emailRef}
 							>
-							Email
+							Email or Pseudo
 						</Input>
 						<Input
 							id="password"

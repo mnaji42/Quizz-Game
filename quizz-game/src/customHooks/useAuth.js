@@ -51,7 +51,38 @@ class Auth {
 	}
 
 	login = (email, password) => {
-		return auth.signInWithEmailAndPassword(email, password)
+		return new Promise((resolve, reject) => {
+				useFirestore().searchUserWithPseudo(email)
+				.then((user) => {
+					auth.signInWithEmailAndPassword(user.data.email, password)
+					.then((usr) => {
+						resolve(usr)
+					})
+					.catch((error) => {
+						if (error.code === "auth/wrong-password") {
+							const stockError = error
+							auth.signInWithEmailAndPassword(email, password)
+							.then((usr) => {
+								resolve(usr)
+							})
+							.catch(() => {
+								reject(stockError)
+							})
+						}
+						else
+							reject(error)
+					})
+				})
+				.catch(() => {
+					auth.signInWithEmailAndPassword(email, password)
+					.then((usr) => {
+						resolve(usr)
+					})
+					.catch((error) => {
+						reject(error)
+					})
+				})
+			})
 	}
 
 	logout = () => {

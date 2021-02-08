@@ -14,7 +14,7 @@ export const Message = (props) => {
 		let timer = null
 		if (props.message.message !== '') {
 			setShowContainer(true)
-			timer = setTimeout(() => {setShowContainer(false)}, 10000)
+			timer = setTimeout(() => {setShowContainer(false)}, 7000)
 		}
 
 		return () => {
